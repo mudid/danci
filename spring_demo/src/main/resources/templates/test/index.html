@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+    <body>
+	<!--<h2 th:text="${pageSize}">test</h2>-->
+		<ul>
+		<li th:each="i:${#numbers.sequence(1,pageSize)}"> <a th:href="@{'prac?index='+${i}}" th:text="'page index: ' + ${i}"> </a><br/><br/> </li>
+		</ul>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2 th:if="${user} != null" th:text="'hi, '+ ${user.login} +'!'"> sdasda </h2>
+
+<p></p>
+<h2><a th:href="@{/upload}"> upload your words</a></h2>
+<h2><a th:href="@{/test/index}"> begin your testing</a></h2>
+ssss
+</body>
+
+</html>

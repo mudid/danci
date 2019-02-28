@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<title>upload your dictionary</title>
+    <body>
+	<!--<h2 th:text="${pageSize}">test</h2>-->
+
+	<form th:action="@{'/upload'}" th:method="POST" enctype="multipart/form-data">
+		Choose your file: <input type="file" name="dicFile" />
+
+		<button type="submit" name="submit">submit</button>
+	</form>
+    </body>
+</html>

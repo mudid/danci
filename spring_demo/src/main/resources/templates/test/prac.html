@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+<script type="text/javascript">
+function compareWord(x)
+{
+var inputWord=x.value;
+var originalWord=x.parentNode.parentNode.firstChild.nextSibling.innerHTML;
+
+	if (originalWord==inputWord){
+		checkButton = x.parentNode.parentNode.lastChild.previousSibling;
+		checkButton.style.backgroundColor="green";
+		nextInput = x.parentNode.parentNode.nextSibling.nextSibling.lastChild.previousSibling.previousSibling.previousSibling.lastChild;
+		nextInput.focus();
+	}else{
+		checkButton = x.parentNode.parentNode.lastChild.previousSibling;
+		checkButton.style.backgroundColor="red";
+	}
+}
+</script>
+</head>
+
+<body>
+
+<hr></hr>
+<h3 th:text="'crrenct page: ' + ${pageIndex}+', total:'+${totalPage}"></h3>
+<hr></hr>
+<table>
+	<tr th:each="word: ${words}">
+		<td style="color:white;" th:text="${word.name}"></td>
+		<td style="color:grey;" th:text="${word.description}"></td>
+		<td style="color: blue;" th:text="${word.spelling}"></td>
+		<td><input type="text" onchange="compareWord(this)" ></input></td>
+		<td>______0<br/></td>
+	</tr>
+</table>
+<hr></hr>
+<h3 th:if="${pageIndex>1}"><a th:href="@{'prac?index='+${pageIndex-1}}">Previous page</a></h3>
+<h3><a th:href="@{'prac?index='+${pageIndex+1}}">next page</a></h3>
+<hr></hr>
+	</body>
+</html>

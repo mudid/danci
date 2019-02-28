@@ -1,0 +1,63 @@
+===========
+1. default currency for each language site, current site, even you visit ZH site first time, the default currency is still USD.
+we should make RMB as default currency for ZH site unless the customer select other currency
+the same for other language sites
+
+#1
+ZH - RMB, TWD, HKD, USD
+www- USD
+kr - KRW，USD
+tw - TWD, USD,HKD
+
+2. current site, we didn't save a customer's currency choice in his profile (session level). means, he always need to select it when access site next time.  we should save his last selection into his profile.
+
+3. still need to support currency change in CSC.
+in CSC, when Agent place an order for a customer, we should get this user's preferred currency from this profile (if empty, will use USD).
+
+4. in CSC, let Agent to ask customer which currency he would like to use, Agent can edit this attribute in profile Edit page for this user
+then place order
+
+5. for Emails, right now, order  confirmation mails always show USD for price and order amount. we should show amount/price with the currency paid by this order.
+============
+JPY=ja_JP,CNY=zh_CN,HKD=zh_HK,USD=en_US,KRW=ko_KR,TWD=zh_TW,GBP=en_GB
+rateReference
+CNY
+6.7692
+currency
+HKD
+7.842254
+
+JPY
+108.58338235
+
+KRW
+1120.2
+
+TWD
+30.819986
+
+QAB_CATA,QAB_CATB,QAB_PUB
+
+
+
+grep -R  '<ERROR><ERRORSTRING>Invalid HASH field</ERRORSTRING></ERROR>' */*/server.log
+
+https://payments.globalone.me/merchant/paymentpage?TERMINALID=3476003&ORDERID=2295416537&CURRENCY=USD&AMOUNT=127.95&DATETIME=01-15-2019%3A20%3A54%3A27%3A785&RECEIPTPAGEURL=http%3A%2F%2Fzh.ashford.com%3A80%2Fus%2Fcheckout%2FunionpayResponse.jsp&VALIDATIONURL=https%3A%2F%2Ffulfillment.ashford.com%2FashfordFulfillment%2Fglobalonebackvalidate&PAYMENTTYPE=CUP_SECUREPAY&email=markma@aaxischina.com&HASH=2197aa5878723781a73a13fa006da48f
+
+
+
+https://payments.globalone.me/merchant/paymentpage?TERMINALID=3476003&ORDERID=2295416537&CURRENCY=USD&AMOUNT=127.95&DATETIME=01-15-2019%3A20%3A54%3A27%3A785&RECEIPTPAGEURL=http%3A%2F%2Fzh.ashford.com%3A80%2Fus%2Fcheckout%2FunionpayResponse.jsp&VALIDATIONURL=https%3A%2F%2Ffulfillment.ashford.com%2FashfordFulfillment%2Fglobalonebackvalidate&PAYMENTTYPE=CUP_SECUREPAY&email=markma@aaxischina.com&HASH=3f4891a1dc8ea3b0ade22b496728eb9e
+
+
+USD=128002,MCP=128001
+USD=128002,MCP=3476999
+
+
+/opt/hsww/keystore/globalone.jks
+
+trustStore=/opt/hsww/keystore/globalonepay.jks
+
+123456
+trustStorePassword=globalonepay123
+
+803
