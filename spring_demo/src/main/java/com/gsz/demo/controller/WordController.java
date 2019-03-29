@@ -126,9 +126,16 @@ public class WordController {
 
 
 	@RequestMapping(method = RequestMethod.DELETE)
-	public CommonResponse deleteWord(@RequestParam Long id) {
+	public CommonResponse deleteWord(@RequestParam(value = "ids") Long[] ids) {
 		CommonResponse response = new CommonResponse();
-		wordRepository.deleteById(id);
+		for (long id : ids) {
+			try {
+				wordRepository.deleteById(id);
+			} catch (Exception e) {
+				log.error(e.getMessage(), e);
+				response.addException(e.getMessage() + " ID - " + id);
+			}
+		}
 		return response;
 	}
 }
