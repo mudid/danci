@@ -5,10 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -18,7 +20,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Getter
 @Setter
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+@Configuration
+@EnableWebSecurity
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private GszUserDetailService gszUserDetailService;
@@ -27,8 +31,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
-		super.configure(http);
+		http.csrf().disable()
+				.authorizeRequests()
+				.antMatchers("/", "/home", "/regsister", "/api/v1/*").permitAll()
+				.anyRequest().authenticated();
 	}
 
 
@@ -39,7 +45,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 
 
-	public AuthenticationProvider getAuthenticationProvider(){
+
+	public AuthenticationProvider getAuthenticationProvider() {
 		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
 		provider.setUserDetailsService(getGszUserDetailService());
 		provider.setPasswordEncoder(new BCryptPasswordEncoder());

@@ -19,6 +19,7 @@ import javax.persistence.*;
 @Table(name = "gsz_word")
 public class GSZWord {
 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

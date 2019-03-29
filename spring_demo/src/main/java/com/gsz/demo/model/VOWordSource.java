@@ -1,4 +1,4 @@
-package com.gsz.demo.bean;
+package com.gsz.demo.model;
 
 import lombok.*;
 
@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.*;
 @Getter
 @Setter
 @ToString
-public class GSZWordSource {
+public class VOWordSource {
 	private String word;
 	private String trans;
 	private String phonetic;

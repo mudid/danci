@@ -31,7 +31,6 @@ public class GSZUser {
 	private String password;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id")
 	private List<GSZWord> words;
 
 }
