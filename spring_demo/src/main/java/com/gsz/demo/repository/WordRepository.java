@@ -15,9 +15,10 @@ import java.util.List;
  */
 
 @Component
-public interface WordRepository extends JpaRepository<GSZWord, Long>{
-	public List<GSZWord> findByUser(GSZUser user,Pageable pageable);
+public interface WordRepository extends JpaRepository<GSZWord, Long> {
 
+	public List<GSZWord> findByUser(GSZUser user, Pageable pageable);
 
+	public GSZWord findByName(String name);
 
 }
